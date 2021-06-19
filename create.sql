@@ -1,21 +1,7 @@
-CREATE TABLE publisher(
-	id serial PRIMARY KEY,
-	name text,
-	country text
-	);
+CREATE TABLE publisher(id INTEGER primary key,name TEXT,country TEXT);
 
-CREATE TABLE books(
-	id serial PRIMARY KEY,
-	title text,
-	publisher serial references publisher(id)
-	);
+CREATE TABLE books(id INTEGER primary key,title TEXT, publisher INTEGER, FOREIGN KEY(publisher) REFERENCES publisher(id));
 
-CREATE TABLE subjects(
-	id serial PRIMARY KEY, 
-	name text
-	);
+CREATE TABLE subjects(id INTEGER primary key, name TEXT);
 
-CREATE TABLE books_subjects(
-	book serial references books(id),
-	subject serial references subjects(id)
-	);
+CREATE TABLE books_subjects(book INTEGER,subject INTEGER, FOREIGN KEY(book)  REFERENCES books(id),FOREIGN KEY(subject) REFERENCES subjects(id));
