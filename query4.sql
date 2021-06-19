@@ -1,3 +1,3 @@
-SELECT s.name
-FROM subjects s, books b, books_subjects bs
-WHERE b.id = bs.book AND s.id = bs.subject AND b.name='Atomic Habits';
+SELECT DISTINCT(s.name)
+FROM subjects s,books_subjects d
+WHERE s.id IN (SELECT d.subject FROM books_subjects d WHERE d.book =  (SELECT id FROM books WHERE title = "Atomic Habits"));
